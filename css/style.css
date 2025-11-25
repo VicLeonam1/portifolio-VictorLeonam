@@ -9,7 +9,7 @@
     box-sizing: border-box;
 }
 
-body, html{
+body{
     height: 100%;
     background-image: linear-gradient(45deg, #262626, #1A1515);
 }
@@ -40,13 +40,12 @@ header .menu div{
     background-color: #d9d9d9;
 }
 
-
 section#home{
     height: calc(100dvh - 90px);
 }
 
+
 #home .titulos-botoes{
-    position: relative;
     z-index: 3;
     display: flex;
     flex-flow: column nowrap;
@@ -106,21 +105,17 @@ section#home{
 }
 
 #minha-foto{
-    position: absolute;
-
-    bottom: 0;
-    right: -20%;
+    width: 100%;
     opacity: 0.8;
     z-index: 2;
 }
 
 section#sobre{
-    position: relative;
     padding-bottom: 30px;
     border-top: 1px solid white;
     border-bottom: 1px solid white;
     background-image: linear-gradient(45deg, #19191b, #2f2f30);
-    z-index: 3;
+    z-index: 333 !important;
 }
 
 #sobre .titulo-section{
@@ -163,14 +158,15 @@ section#sobre{
 }
 
 .box-text h1 span{
-    background: linear-gradient(45deg, #AC7300, #D88B00, #F2C600, #F2C600, #AC7300);
+     background: linear-gradient(45deg, #AC7300, #D88B00, #F2C600, #F2C600, #AC7300);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
 }
 
 .pixelarte{
-    transform: translate(10%, 12%);
+    width: 100%;
+    transform: translateY(10%);
 }
 
 .box-text p{
