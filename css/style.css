@@ -227,236 +227,329 @@ section#ferramentasweb{
     width: 130px;
     height: 130px;
     background-image: linear-gradient(45deg, #434343, #2a2a2a);
+
+   
+}
+/* --- Seção Principal (#projetos) --- */
+#projetos {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Importante para o container do slider */
+    display: flex; /* Usando flexbox no contêiner principal */
+    flex-direction: column;
 }
 
-.carousel{
-    margin-top: -80px;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-}
-.carousel .list{
-    height: 100%;
+/* --- Container dos Slides (Sobreposição) --- */
+.slider-container {
+    flex-grow: 1; 
     position: relative;
+    width: 100%;
 }
-.carousel .list::before{
-    position: absolute;
-    width: var(--w-image);
-    height: 100%;
-    content: '';
-    top: 0;
-    left: calc(100% - calc(var(--w-image) * var(--calculate)));
-    border-left: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
-    z-index: 10;
-    pointer-events: none;
-}
-.carousel .list::after{
-    position: absolute;
-    top: 50px;
-    left: 50px;
-    content: '';
-    background-color: red;
-    width: 400px;
-    height: 300px;
-    z-index: 10;
-    pointer-events: none;
-    border-radius: 20px  50px 110px  230px;
-    filter: blur(150px);
-    opacity: .6;
-}
-.carousel .list .item{
+
+/* --- Estilo Base do Slide --- */
+.slide {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    opacity: 0; /* Padrão: invisível */
+    z-index: 1; /* Padrão: atrás */
+    display: flex; /* Flexbox para organizar o conteúdo interno */
+    padding: 5vh 5vw;
+    transition: background-color 0.5s ease; /* Adicionar transição suave de cor/fundo se mudar */
 }
-.carousel .list .item .image{
-    width: var(--w-image);
-    height: 100%;
-    position: absolute;
-    bottom: 0;
-    left: calc(100% - calc(var(--w-image) * var(--calculate)));
-    padding: 20px;
+
+/* Classe Ativa */
+.slide.active {
+    opacity: 1;
+    z-index: 10; /* Slide ativo fica na frente */
+}
+
+/* --- Backgrounds Específicos dos Slides --- */
+
+/* 🟢 Slide Green (PROJETO GREEN) */
+.slide-green {
+    background: url(../imgs/green.png) no-repeat center / cover;
+}
+
+/* 🌊 Slide Atlantix (PROJETO ATLANTIX) */
+.slide-atlantix {
+    background: url(../imgs/atlantix.png) no-repeat center / cover;
+}
+
+/* 🏛️ Slide Atlantis (PROJETO ATLANTIS) */
+.slide-atlantis {
+    background: url(../imgs/atlantis.png) no-repeat center / cover;
+}
+
+
+/* --- Conteúdo Interno do Slide (Flexbox) --- */
+.content-wrapper  {
+    max-width: 40%; /* Largura da coluna de texto à esquerda */
+    z-index: 15;
+    position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-weight: 500;
+    justify-content: space-between;
+    height: 90%;
 }
-.carousel .list .item .image img{
-    width: 70%;
+
+
+/* Título Principal */
+.title-main {
+    background: linear-gradient(45deg, #AC7300, #D88B00, #F2C600, #F2C600, #AC7300);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+    font-size: 3vw;
+}
+
+
+/* Descrição */
+.description {
+    font-size: 1.2vw;
+    line-height: 1.6;
+    color: white;
+    text-align: justify;
+}
+
+/* Ícones de Tecnologia */
+.tech-icons {
+    display: flex;
+    gap: 30px;
     margin-bottom: 20px;
-    filter: drop-shadow(0 150px 50px #9e0c0c55);
 }
-.carousel .list .item .image figcaption{
-    font-family: 'Aboreto';
-    font-weight: bold;
-    font-size: 1.3em;
-    text-align: right;
-    margin-bottom: 30px;
-    width: 70%;
+
+.tech-icons .icon {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid; /* A cor da borda será definida pela classe do slide */
+    margin-right: 10px;
+    font-size: 0.8vw;
+    border-radius: 3px;
 }
-.carousel .list .item .main-content{
-    height: 100%;
-    display: grid;
-    grid-template-columns: calc(100% - calc(var(--w-image) * var(--calculate)));
+
+.cta-text-bottom {
+    font-size: 1vw;
+    opacity: 0.7;
 }
-.carousel .list .item .main-content .content{
-    padding: 150px 20px  20px 80px;
+
+/* --- Definição de Cores por Slide --- */
+
+/* Cores para PROJETO GREEN */
+.slide-green .title-main,
+.slide-green .tech-icons .icon,
+.slide-green .icon-tree {
+    color: var(--color-green);
+    border-color: var(--color-green);
 }
-.carousel .list .item .main-content .content h2{
-    font-size: 5em;
-    font-family: 'Aboreto';
+
+/* Cores para PROJETO ATLANTIX */
+.slide-atlantix .title-main,
+.slide-atlantix .tech-icons .icon,
+.slide-atlantix .icon-tree {
+    color: var(--color-blue);
+    border-color: var(--color-blue);
 }
-.carousel .list .item .main-content .content .price{
-    font-family: 'Aboreto';
-    font-size: 3em;
-    margin: 20px 0;
+
+/* Cores para PROJETO ATLANTIS */
+.slide-atlantis .title-main,
+.slide-atlantis .tech-icons .icon,
+.slide-atlantis .icon-tree {
+    color: var(--color-gold);
+    border-color: var(--color-gold);
 }
-.carousel .list .item .main-content .content .addToCard{
-    background-color: #4f8b69;
-    color: #fff;
-    padding: 10px  30px;
-    font-family: Poppins;
-    font-size: large;
-    font-weight: 500;
-    border-radius: 30px;
-    border: none;
-    margin-top: 20px;
-}
-.arrows{
+
+
+/* --- Texto de Fundo (Overlay) --- */
+.big-text-overlay {
     position: absolute;
-    bottom: 20px;
-    width: calc(100% - calc(var(--w-image) * var(--calculate)));
-    display: grid;
-    grid-template-columns: repeat(2, 50px);
-    grid-template-rows: 50px;
-    justify-content: end;
-    gap: 10px;
-}
-.arrows button{
-    background-color: transparent;
-    border: 1px solid var(--border-color);
-    color: #fff;
-    font-family: monospace;
-    font-size: large;
-    font-weight: bold;
-    line-height: 0;
-    box-shadow: 0 10px 40px #5555;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.arrows button:hover{
-    background-color: #eee5;
-}
-.carousel .list .item{
-    display: none;
-}
-.carousel .list .item.active,
-.carousel .list .item.other_1,
-.carousel .list .item.other_2{
-    display: block;
-}
-.carousel .list .item.active{
-    z-index: 2;
-}
-.carousel .list .item.other_1,
-.carousel .list .item.other_2{
+    right: 0;
+    top: 50%;
+    /* Mantido o transform: translateY(-50%) para CENTRALIZAR VERTICALMENTE o bloco de texto, 
+       mas NUNCA para mover o slider inteiro. */
+    transform: translateY(-50%); 
+    font-size: 8vw;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.1);
+    line-height: 0.9;
+    z-index: 12;
+    text-align: right;
     pointer-events: none;
 }
-.carousel .list .item.active .main-content{
-    animation: showContent 1s ease-in-out 1 forwards;
+
+/* --- Botão "Comece agora" (CTA) --- */
+.cta-bottom {
+    position: absolute;
+    bottom: 5vh;
+    left: 5vw;
+    z-index: 20;
 }
-@keyframes showContent{
-    from{
-        clip-path: circle(0% at 70% 50%);
-    }to{
-        clip-path: circle(100% at 70% 50%);
+
+.cta-button {
+    display: flex;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* --- Controles do Slider --- */
+.slider-controls {
+    position: absolute;
+    bottom: 5vh;
+    left: 20vw;
+    z-index: 20;
+    display: flex;
+    gap: 10px;
+}
+
+.slider-controls button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    border-radius:  50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.slider-controls button:hover {
+    background-color: white;
+    color: black;
+}
+
+.slider-controls button span {
+    font-size: 30px;
+}
+
+.slider-controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.slider-controls svg {
+    fill: white;
+    display: block;
+}
+
+@media screen and (max-width: 1024px) {
+    /* --- Conteúdo Interno do Slide (Ajuste de Largura) --- */
+    .content-wrapper {
+        max-width: 50%; /* Aumenta a largura da coluna de texto */
+    }
+
+    /* --- Tipografia --- */
+    .title-main {
+        font-size: 4vw; /* Aumenta a fonte do título */
+    }
+
+    .description {
+        font-size: 1.5vw; /* Aumenta a fonte da descrição */
+    }
+
+    .tech-icons .icon {
+        font-size: 1vw; /* Aumenta um pouco a fonte dos ícones de tecnologia */
+    }
+
+    .cta-button {
+        font-size: 1.5vw; /* Aumenta a fonte do botão CTA */
+    }
+
+    .cta-text-bottom {
+        font-size: 1.2vw;
+    }
+
+    /* --- Texto de Fundo (Overlay) --- */
+    .big-text-overlay {
+        font-size: 10vw; /* O texto de fundo pode ficar um pouco maior */
     }
 }
-.next .item.other_1{
-    z-index: 1;
-}
-.next .item .image img,
-.next .item .image figcaption{
-    animation: effectNext .5s ease-in-out 1 forwards;
-}
-@keyframes effectNext{
-    from{
-        transform: translateX(calc(var(--transform-from)));
-    }to{
-        transform: translateX(calc(var(--transform-from) - var(--w-image)));
+
+@media screen and (max-width: 768px) {
+    /* --- Seção Principal (#projetos) --- */
+    #projetos {
+        height: auto; /* Permite que a seção cresça com o conteúdo */
+        min-height: 100vh; /* Garante que ainda ocupe pelo menos a tela inteira */
     }
-}
-.next .item.active .image{
-    --transform-from: var(--w-image);
-}
-.next .item.other_1 .image{
-    z-index: 3;
-    --transform-from: 0px;
-    overflow: hidden;
-}
-.next .item.other_2 .image{
-    z-index: 3;
-    --transform-from: calc(var(--w-image) * 2);
-}
-.arrows{
-    z-index: 10;
-}
-/* prev */
-.prev .list .item .image img,
-.prev .list .item .image figcaption{
-    animation: effectPrev 0.5s ease-in-out 1 forwards;
-}
-@keyframes effectPrev{
-    from{
-        transform: translateX(calc(var(--transform-from)));
-    }to{
-        transform: translateX(calc(var(--transform-from) + var(--w-image)));
+
+    /* --- Estilo Base do Slide --- */
+    .slide {
+        /* Remove o padding lateral exagerado para ganhar espaço */
+        padding: 10vh 5vw;
     }
-}
-.prev .list .item.active .image{
-    --transform-from: calc(var(--w-image) * -1);
-    overflow: hidden;
-}
-.prev .list .item.other_1 .image{
-    --transform-from: 0px;
-    z-index: 3;
-}
-.prev .list .item.other_2 .image{
-    z-index: 3;
-    --transform-from: var(--w-image);
-}
-.prev .list .item.other_2 .main-content{
-    opacity: 0;
-}
-@media screen and (max-width: 1023px){
-    :root{
-        --calculate: 1;
-        --w-image: 400px; 
-    }
-    .carousel .list .item .main-content .content h2{
-        font-size: 3em;
-    }
-}
-@media screen and (max-width: 767px){
-    .carousel .list .item .image{
-        width: 100%;
-        left: 0;
-        justify-content: center;
-    }
-    .carousel .list .item .image figcaption{
-        color: #fff;
-        width: 100%;
+
+    /* --- Conteúdo Interno do Slide (Layout Empilhado) --- */
+    .content-wrapper {
         text-align: center;
+        max-width: 100%; /* Ocupa a largura total (ou quase) */
+        height: auto; /* Permite que o wrapper se ajuste ao conteúdo */
+        justify-content: space-between; /* Alinha o conteúdo ao topo */
+        gap: 20px; /* Adiciona espaço entre os elementos empilhados */
     }
-    .carousel .list .item .main-content .content{
-        display: none;
+
+    /* --- Tipografia (Unidades Fixas para Mobile) --- */
+    .title-main {
+        font-size: 7vw; /* Tamanho de fonte maior para mobile */
     }
-    .arrows{
-        left: 50%;
-        justify-content: center;
+
+    .description {
+        font-size: 4vw; /* Tamanho de fonte adequado para mobile */
+    }
+
+    .tech-icons {
+        gap: 15px; /* Reduz o espaçamento entre ícones */
+    }
+    
+    .tech-icons .icon {
+        font-size: 3vw;
+        padding: 3px 8px;
+    }
+
+    .cta-button {
+        font-size: 4vw;
+        padding: 8px 15px;
+    }
+
+    .cta-text-bottom {
+        font-size: 3vw;
+    }
+
+    /* --- Texto de Fundo (Overlay) --- */
+    .big-text-overlay {
+        /* Desativa ou Reduz drasticamente o texto de fundo para não atrapalhar */
+        display: none; /* Opção 1: Ocultar */
+        /* Opção 2: Se quiser manter, reduza o tamanho e a opacidade: */
+        /* font-size: 15vw;
+        color: rgba(255, 255, 255, 0.05); */
+    }
+
+    /* --- Posição dos Controles e CTA (Centralizar/Ajustar) --- */
+    /* Posiciona os controles e CTA na parte inferior central da tela */
+    .cta-bottom,
+    .slider-controls {
+        position: static; /* Volta à posição normal no fluxo do documento */
+        margin-top: 30px; /* Adiciona espaço após o conteúdo */
+        left: auto; /* Remove a posição fixa de desktop */
+        bottom: auto; /* Remove a posição fixa de desktop */
+        width: 100%;
+        display: flex;
+        justify-content: center; /* Centraliza os itens */
+    }
+
+    .cta-bottom {
+        order: 10; /* Garante que o CTA venha antes dos controles na ordem flexbox se necessário */
+    }
+
+    .slider-controls {
+        order: 11;
+        margin-bottom: 20px; /* Espaço para o final da tela */
     }
 }
