@@ -40,12 +40,9 @@ header .menu div{
     background-color: #d9d9d9;
 }
 
-main{
-    height: 100vh;
-}
 
 section#home{
-    height: 100%
+    height: calc(100dvh - 90px);
 }
 
 #home .titulos-botoes{
@@ -166,7 +163,7 @@ section#sobre{
 }
 
 .box-text h1 span{
-     background: linear-gradient(45deg, #AC7300, #D88B00, #F2C600, #F2C600, #AC7300);
+    background: linear-gradient(45deg, #AC7300, #D88B00, #F2C600, #F2C600, #AC7300);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: bold;
