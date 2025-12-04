@@ -139,6 +139,12 @@ section#sobre{
     border-radius: 20px 0 0 20px ;
 }
 
+#sobre h2{
+    text-align: center;
+    margin: 20px 0;
+    color: white;
+}
+
 /* Estilo específico para a seta (opcional) */
 .seta-direita {
     font-size: 20px;
@@ -155,13 +161,30 @@ section#sobre{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
-    width: 100vw;
+    align-content: center;
+    margin: auto;
+    justify-items: center;
+    gap: 30px;
 }
-
 #sobre .ferramentas .ferramenta{
     display: flex;
     flex-flow: column;
-    text-align: center;
-    width: 100%;
+    align-items: center; 
+    justify-content: center;
+    text-align: center; 
+    width: 200px;
+    height: 200px;
     border: 1px solid white;
+}
+
+#sobre .ferramentas .ferramenta img{
+    width: 90px;
+}
+
+.textos-sobre{
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+    color: white;
+    margin: 30px;
 }
