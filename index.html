@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -7,17 +7,85 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
     <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_right"
     />
     <link rel="stylesheet" href="css/style.css" />
     <title>PORTIFÓLIO - VICTOR LEONAM</title>
   </head>
   <body>
+    <div class="menu-cll">
+      <button class="fechar" onclick="fecharMenu()">
+        <span class="material-symbols-outlined"> close </span>
+      </button>
+      <div class="links-e-traducao">
+        <nav class="links-cll">
+          <ul>
+            <a href="#home" class="link-cll">
+              <li>
+                <span class="material-symbols-outlined"> home </span>
+                <h4>início</h4>
+              </li>
+            </a>
+            <a href="#sobre" class="link-cll">
+              <li>
+                <span class="material-symbols-outlined"> info </span>
+                <h4>Sobre</h4>
+              </li>
+            </a>
+            <a href="#habilidades" class="link-cll">
+              <li>
+                <span class="material-symbols-outlined"> construction </span>
+                <h4>Habilidades</h4>
+              </li>
+            </a>
+            <a href="#projetos" class="link-cll">
+              <li>
+                <span class="material-symbols-outlined"> folder_open </span>
+                <h4>Projetos</h4>
+              </li>
+            </a>
+            <a href="#contato" class="link-cll">
+              <li>
+                <span class="material-symbols-outlined"> call </span>
+                <h4>Contato</h4>
+              </li>
+            </a>
+          </ul>
+        </nav>
+        <div class="traducao-cll-estilo">
+          <ul class="bandeiras-cll">
+            <li class="bandeira-cll">
+              <img src="imgs/brasil.png" alt="bandeira do brasil" />
+              <h3>PT-BR</h3>
+            </li>
+            <li class="bandeira-cll">
+              <img src="imgs/usa.png" alt="bandeira estados unidos" />
+              <h3>EN-US</h3>
+            </li>
+          </ul>
+          <div class="tradu">
+            <img
+              src="imgs/brasil.png"
+              alt="bandereira da lingua escolhida do site"
+            />
+          </div>
+          <span class="material-symbols-outlined"> sunny </span>
+        </div>
+      </div>
+      <footer class="footer-cll">
+        <h2>Victor Leonam</h2>
+      </footer>
+    </div>
+    <div class="menuflutuante">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
     <header>
       <img src="imgs/logo.png" alt="Minha logo" />
 
-      <div class="menu-hamburguer">
+      <div class="menu-hamburguer" onclick="abrirMenu()">
         <div></div>
         <div></div>
         <div></div>
@@ -109,7 +177,18 @@
             <strong>futuro da web</strong>.
           </p>
         </div>
+        <div class="info-sobre">
+          <div class="info">
+            <h1>+1 ano</h1>
+            <p>De experiência</p>
+          </div>
+          <div class="info">
+            <h1>9</h1>
+            <p>Projetos</p>
+          </div>
+        </div>
       </section>
     </main>
+    <script src="js/menu-cll.js"></script>
   </body>
 </html>
